@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arsalan Mateen - Portfolio</title>
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme") || "light";
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .project-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .dark .project-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300"
+  >
+    <nav
+      class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm transition-colors duration-300"
+    >
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <div class="text-2xl font-bold gradient-text">Portfolio</div>
+          <div class="hidden md:flex space-x-6 items-center">
+            <a
+              href="#home"
+              class="nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+              >Home</a
+            >
+
+            <a
+              href="#skills"
+              class="nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+              >Skills</a
+            >
+            <a
+              href="#experience"
+              class="nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+              >Experience</a
+            >
+            <a
+              href="#projects"
+              class="nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+              >Projects</a
+            >
+            <a
+              href="#contact"
+              class="nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+              >Contact</a
+            >
+          </div>
+          <div class="flex items-center gap-3">
+            <button
+              id="theme-toggle-mobile"
+              class="text-2xl focus:outline-none p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors md:hidden"
+              aria-label="Toggle theme"
+            >
+              <i id="theme-icon-mobile" class="fas fa-moon"></i>
+            </button>
+            <button
+              id="mobile-menu-btn"
+              class="md:hidden text-2xl focus:outline-none"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <button
+              id="theme-toggle"
+              class="hidden md:inline-flex p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none"
+              aria-label="Toggle theme"
+            >
+              <i id="theme-icon" class="fas fa-moon text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-700 transition-colors duration-300"
+      >
+        <div class="container mx-auto px-4 py-4 space-y-3">
+          <a
+            href="#home"
+            class="block nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >Home</a
+          >
+
+          <a
+            href="#skills"
+            class="block nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >Skills</a
+          >
+          <a
+            href="#experience"
+            class="block nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >Experience</a
+          >
+          <a
+            href="#projects"
+            class="block nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="block nav-link hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 via-white to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 pt-20 transition-colors duration-300"
+    >
+      <div class="container mx-auto px-4 text-center fade-in-up">
+        <div class="mb-6">
+          <div
+            class="w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-sm"
+          >
+            <img
+              src="./assets/profile.jpeg"
+              alt="Arsalan Mateen"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold mb-4">
+          <span class="gradient-text">Arsalan Mateen</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
+          Junior MERN Engineer | Learning LLM Engineering
+        </p>
+        <p
+          class="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-12"
+        >
+          I'm an undergraduate student at the National University of Computer
+          and Emerging Sciences FAST Peshawar, Bronze Medal &amp; Dean's List
+          holder Spring 2025 for my exemplary academic performance.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="#projects"
+            class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition duration-300"
+          >
+            View My Work
+          </a>
+          <a
+            href="#contact"
+            class="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-600 hover:text-white transition duration-300"
+          >
+            Get In Touch
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+
+    <!-- Projects Section -->
+    <section
+      id="projects"
+      class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300"
+    >
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+          Featured Projects
+        </h2>
+        <div
+          class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <!-- Project 1 -->
+          <div
+            class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="./assets/toolify.png"
+                alt="Toolify screenshot"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 dark:text-gray-200">Toolify</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                A production figma design converted into a responsive landing
+                page. Focused on pixel-accurate reproduction and responsive
+                layouts.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm"
+                  >HTML</span
+                >
+                <span
+                  class="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm"
+                  >CSS</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a
+                  href="https://toolify-page.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300"
+                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                >
+                <a
+                  href="https://github.com/ArsalanMateen/Toolify-Landing-WebPage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300"
+                  ><i class="fab fa-github"></i> Code</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="project-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg"
+          >
+            <div class="h-48 overflow-hidden">
+              <img
+                src="./assets/ping.png"
+                alt="Ping screenshot"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 dark:text-gray-200">Ping</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                A Figma design converted into a responsive landing page with
+                basic animations and smooth interactions.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-full text-sm"
+                  >HTML</span
+                >
+                <span
+                  class="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-full text-sm"
+                  >CSS</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a
+                  href="https://ping-landing.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                >
+                <a
+                  href="https://github.com/ArsalanMateen/Ping"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
+                  ><i class="fab fa-github"></i> Code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Skills Section -->
+    <section
+      id="skills"
+      class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+    >
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+          Skills & Technologies
+        </h2>
+        <div class="max-w-5xl mx-auto">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fab fa-react text-4xl text-cyan-500 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">React</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fas fa-server text-4xl text-gray-600 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">Express</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fas fa-database text-4xl text-emerald-500 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">MongoDB</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fas fa-database text-4xl text-indigo-600 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">SQL</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fab fa-node text-4xl text-green-600 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">Node.js</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fab fa-bootstrap text-4xl text-purple-600 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">Bootstrap</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fab fa-css3-alt text-4xl text-teal-500 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">Vanilla CSS</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">HTML</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fab fa-git-alt text-4xl text-red-600 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">Git</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fas fa-code text-4xl text-yellow-500 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">DSA</h3>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 p-6 rounded-lg text-center shadow-md hover:shadow-xl transition duration-300"
+            >
+              <i class="fas fa-code text-4xl text-blue-600 mb-3"></i>
+              <h3 class="font-semibold dark:text-gray-200">C / C++</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="experience"
+      class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300"
+    >
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-extrabold text-center mb-14 gradient-text">
+          Experience
+        </h2>
+
+        <div class="flex justify-center">
+          <div
+            class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 md:p-8 inline-flex flex-col md:flex-row md:items-center w-fit transition hover:shadow-2xl hover:-translate-y-1 duration-300"
+          >
+            <!-- Image -->
+            <div
+              class="w-48 h-40 md:h-32 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-sm mx-auto md:mx-0"
+            >
+              <img
+                src="./assets/FDO.jpeg"
+                alt="Experience Image"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Content -->
+            <div class="mt-6 md:mt-0 md:ml-8 text-center md:text-left">
+              <h3 class="text-2xl font-semibold dark:text-gray-100">
+                Front Desk Officer
+              </h3>
+              <p class="text-md text-gray-600 dark:text-gray-300 mt-1">
+                FAST NUCES, Peshawar Campus
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-3">
+                <span class="font-medium">Duration:</span> 7 July – 18 August
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-20 bg-gradient-to-br from-purple-100 via-white to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 transition-colors duration-300"
+    >
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+          Get In Touch
+        </h2>
+        <div class="max-w-2xl mx-auto">
+          <p class="text-center text-gray-600 dark:text-gray-300 mb-12 text-lg">
+            Whether it's a hackathon or a project, just give me a pinch.
+          </p>
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transition-colors duration-300"
+          >
+            <form id="contact-form" class="space-y-6">
+              <div>
+                <label
+                  for="name"
+                  class="block text-gray-700 dark:text-gray-200 font-semibold mb-2"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                />
+              </div>
+              <div>
+                <label
+                  for="email"
+                  class="block text-gray-700 dark:text-gray-200 font-semibold mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                />
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block text-gray-700 dark:text-gray-200 font-semibold mb-2"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-lg hover:shadow-lg transform hover:scale-105 transition duration-300 font-semibold"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+          <div class="flex justify-center gap-6 mt-12">
+            <a
+              href="https://github.com/ArsalanMateen"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-3xl text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/arsalanmateen/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-3xl text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a
+              href="https://leetcode.com/u/arsalanmateen/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-3xl text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >
+              <i class="fas fa-code"></i>
+            </a>
+            <a
+              href="mailto:arsalanmateen.pk@gmail.com"
+              class="text-3xl text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition"
+            >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gray-800 dark:bg-gray-950 text-white py-8 transition-colors duration-300"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2024 Arsalan Mateen. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
